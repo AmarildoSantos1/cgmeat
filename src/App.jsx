@@ -8,7 +8,7 @@ function App() {
   return (
     <>
    <AppRouter/>
-   <ToastContainer position="top-right" autoClose={5000} /> {/* Configure as opções do ToastContainer aqui */}
+   <ToastContainer position="top-right" autoClose={5000} /> 
 
     </>
   )

@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
-
 function Home() {
   const history = useHistory();
   const [products, setProducts] = useState([]);
@@ -63,7 +62,6 @@ function Home() {
       }
     } catch (error) {
       console.error(error);
-    
     }
   };
 
@@ -85,17 +83,17 @@ function Home() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center custom-gradient">
       <div className="bg-white p-8 rounded-3xl shadow-md w-96 opacity-90">
-        <img src={shopeople} alt="Bless Basket" className="mb-4 w-54" />
+        <img src={shopeople} alt="CG MEAT" className="mb-4 w-54" />
 
-        <h1 className="text-3xl font-semibold mb-6 text-center text-gray-800">
-          Produtos da CG Meat
+        <h1 className="text-3xl font-semibold mb-6 text-center text-red-800">
+          Produtos do Acougue
         </h1>
 
         {message && <p className="text-red-500 mb-4 text-center">{message}</p>}
 
         {products.length === 0 ? (
-          <p className="text-center text-gray-600">
-            Adicione produtos para que apareçam aqui!
+          <p className="text-center text-red-600">
+            Adicione produtos!
           </p>
         ) : (
           <div className="mb-8">
@@ -103,8 +101,8 @@ function Home() {
               <div key={product.id} className="mb-4 flex items-center justify-between">
                 <div>
                   <h2 className="text-lg font-semibold">{product.name}</h2>
-                  <p className="text-gray-600">Preço: R$ {product.price}</p>
-                  <p className="text-gray-600">Validade: {product.validity}</p> 
+                  <p className="text-red-600">Preço: R$ {product.price}</p>
+                  <p className="text-red-600">Validade: {product.validity}</p>
                 </div>
                 <div className="flex items-center">
                   <button
@@ -128,9 +126,9 @@ function Home() {
 
         <button
           onClick={handleGoToProductPage}
-          className="w-full bg-custom2 text-white rounded-2xl font-semibold py-2 px-4 hover:bg-darkGreen focus:outline-none focus:bg-darkGreen"
+          className="w-full bg-custom2 text-white rounded-2xl font-semibold py-2 px-4 hover:bg-darkRed focus:outline-none focus:bg-darkRed"
         >
-          Cadastro de Produtos
+          Cadastro de carnes
         </button>
       </div>
       <ToastContainer />
@@ -138,7 +136,7 @@ function Home() {
       {productToDelete && (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-8 rounded shadow-md w-96">
-            <p className="mb-4 text-center"> Deseja excluir o produto?</p>
+            <p className="mb-4 text-center">excluir o produto?</p>
             <div className="flex justify-center">
               <button
                 onClick={confirmDeleteProduct}
@@ -148,7 +146,7 @@ function Home() {
               </button>
               <button
                 onClick={closeDeleteConfirmationModal}
-                className="bg-blue-500 text-white rounded-full font-semibold py-2 px-3 hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+                className="bg-yellow-500 text-white rounded-full font-semibold py-2 px-3 hover:bg-yellow-600 focus:outline-none focus:bg-yellow-600"
               >
                 Cancelar
               </button>

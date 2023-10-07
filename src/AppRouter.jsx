@@ -1,4 +1,4 @@
-// AppRouter.js
+
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import Home from './pages/Home';

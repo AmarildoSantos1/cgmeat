@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import cgmeat from '../assets/background.png';
 import loginService from '../services/loginService';
 
 function Login() {
   const [rememberMe, setRememberMe] = useState(false);
-  const [showPassword, setShowPassword] = useState(false); 
+  const [showPassword, setShowPassword] = useState(false);
   const history = useHistory();
 
-  
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -29,20 +29,20 @@ function Login() {
         localStorage.setItem("token", result["Access-Token"]);
         history.push("/home");
       } else {
-        toast("Verifique suas credenciais.");
+        toast("Erro no login.");
       }
     } catch (err) {
-      toast("Erro desconhecido");
+      toast("Error");
     }
   };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center custom-gradient">
-      <img src={blessbasket} alt="Bless Basket" className="mb-4 w-54" />
+      <img src={cgmeat} alt="CG MEAT" className="mb-4 w-54" />
 
       <div className="bg-white p-8 rounded-3xl shadow-md w-96 opacity-90">
-        <h1 className="text-3xl font-semibold mb-6 text-center text-green-800">
-          Bem-vindo à<br /> Campina Meat
+        <h1 className="text-3xl font-semibold mb-6 text-center text-red-800">
+          Bem-vindo à<br /> CG MEAT
         </h1>
 
         <form onSubmit={handleSubmit}>
@@ -54,8 +54,8 @@ function Login() {
               type="email"
               id="email"
               name="email"
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-              placeholder="Digite seu email"
+              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-yellow-500"
+              placeholder="Insira o email"
             />
           </div>
           <div className="mb-6">
@@ -64,17 +64,17 @@ function Login() {
             </label>
             <div className="relative">
               <input
-                type={showPassword ? 'text' : 'password'} 
+                type={showPassword ? 'text' : 'password'}
                 id="password"
                 name="password"
-                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-                placeholder="Digite sua senha"
+                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-yellow-500"
+                placeholder="Insira a senha"
               />
               <span
                 className="absolute top-2 right-2 cursor-pointer"
                 onClick={togglePasswordVisibility}
               >
-                {showPassword ? 'Ocultar' : 'Mostrar'} Senha
+                {showPassword ? 'Ocultar' : 'Visualizar'} Senha
               </span>
             </div>
           </div>
@@ -86,26 +86,32 @@ function Login() {
                 onChange={() => setRememberMe(!rememberMe)}
                 className="mr-2"
               />
-              Salvar login
+              Deixar-me conectado
             </label>
           </div>
           <button
             type="submit"
-            className="w-full bg-custom2 text-white rounded-2xl font-semibold py-2 px-4 hover:bg-darkBlue focus:outline-none focus:bg-darkBlue"
+            className="w-full bg-custom2 text-white rounded-2xl font-semibold py-2 px-4 hover:bg-darkRed focus:outline-none focus:bg-darkRed"
           >
-            Entrar
+            Logar
           </button>
         </form>
-        <p className="mt-4 text-center text-green-600">
-          Não tem uma conta?{' '}
-          <a href="/register" className="text-darkGreen hover:underline">
+        <p className="mt-4 text-center text-red-600">
+          Sem conta?{' '}
+          <span
+            className="text-darkRed cursor-pointer"
+            onClick={() => history.push("/register")}
+          >
             Registrar
-          </a>
+          </span>
         </p>
         <p className="mt-2 text-center text-custom2">
-          <a href="/forgot-password" className="hover:underline">
+          <span
+            className="cursor-pointer"
+            onClick={() => history.push("/forgot-password")}
+          >
             Esqueceu a senha?
-          </a>
+          </span>
         </p>
       </div>
       <ToastContainer />

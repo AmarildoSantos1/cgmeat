@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import cgmeat from '../assets/background.png';
 
 function Register() {
   const [name, setName] = useState('');
@@ -24,75 +25,76 @@ function Register() {
       });
 
       if (response.status === 201) {
-        toast.success('Usuário efetuado com sucesso');
+        toast.success('Usuário criado');
         history.push('/registration-complete');
       } else if (response.status === 400) {
-        toast.error('Email já existente');
+        toast.error('Email existente');
       } else {
-        setError('Erro ao cadastrar, tente novamente.');
+        setError('Erro, tente novamente.');
       }
     } catch (error) {
-      setError('Erro ao cadastrar, tente novamente.');
+      setError('Erro, tente novamente.');
     }
   };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center custom-gradient">
+      <img src={cgmeat} alt="CGMEAT" className="mb-4 w-54" />
 
       <div className="bg-white p-8 rounded-3xl shadow-md w-96 opacity-90">
-        <h1 className="text-3xl font-semibold mb-6 text-center text-gray-800">
-          Cadastre-se na <br />CG Meat
+        <h1 className="text-3xl font-semibold mb-6 text-center text-red-800">
+          Cadastre-se com a <br />CG MEAT
         </h1>
 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="name" className="block text-gray-800 text-sm font-semibold mb-2">
+            <label htmlFor="name" className="block text-red-800 text-sm font-semibold mb-2">
               Nome
             </label>
             <input
               type="text"
               id="name"
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-              placeholder="Digite seu nome"
+              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-yellow-500"
+              placeholder="Insira seu nome"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-800 text-sm font-semibold mb-2">
+            <label htmlFor="email" className="block text-red-800 text-sm font-semibold mb-2">
               Email
             </label>
             <input
               type="email"
               id="email"
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-              placeholder="Insira seu email"
+              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-yellow-500"
+              placeholder="Insira o email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="mb-6">
-            <label htmlFor="password" className="block text-gray-800 text-sm font-semibold mb-2">
+            <label htmlFor="password" className="block text-red-800 text-sm font-semibold mb-2">
               Senha
             </label>
             <input
               type="password"
               id="password"
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-              placeholder="Insira sua senha"
+              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-yellow-500"
+              placeholder="Insira a senha"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className="mb-6">
-            <label htmlFor="cpf" className="block text-gray-800 text-sm font-semibold mb-2">
+            <label htmlFor="cpf" className="block text-red-800 text-sm font-semibold mb-2">
               CPF
             </label>
             <input
               type="cpf"
               id="cpf"
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-              placeholder="Digite seu CPF"
+              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-yellow-500"
+              placeholder="Insira o CPF"
               value={cpf}
               onChange={(e) => setCPF(e.target.value)}
             />
@@ -107,11 +109,14 @@ function Register() {
 
         {error && <p className="mt-4 text-center text-red-500">{error}</p>}
 
-        <p className="mt-4 text-center text-gray-600">
-          Já tem conta?{' '}
-          <a href="/" className="text-custom hover:underline">
+        <p className="mt-4 text-center text-red-600">
+          Tem uma conta?{' '}
+          <span
+            className="text-custom cursor-pointer"
+            onClick={() => history.push("/")}
+          >
             Efetue login
-          </a>
+          </span>
         </p>
       </div>
     </div>

@@ -4,11 +4,11 @@ export default {
   theme: {
     extend: {
       backgroundColor: {
-        'darkGreen': 'rgba(0, 44, 43, 1)',
-        'custom2': 'rgba(0, 100, 100, 1)'// Adicione sua cor personalizada aqui
+        'darkRed': 'rgba(255, 0, 0)',
+        'custom2': 'rgba(255, 188, 71)'
       },
       textColor:{
-        'darkGreen': 'rgba(0, 44, 43, 1)',
+        'darkRed': 'rgba(255, 0, 0)',
       }
     },
   },
