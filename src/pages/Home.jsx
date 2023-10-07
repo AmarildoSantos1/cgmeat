@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import shopeople from '../assets/undraw_shopping_bags_noba (1).svg';
+
 
 function Home() {
   const history = useHistory();
