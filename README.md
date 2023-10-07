@@ -1,4 +1,4 @@
-# Bless Basket
+
 
 Este é um projeto que utiliza as tecnologias Node.js, Express, React, Vite e MongoDB.
 
